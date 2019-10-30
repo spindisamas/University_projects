@@ -1,4 +1,4 @@
-#ifndef SFNCS
+﻿#ifndef SFNCS
 #define SFNCS
 #include <iostream>
 #include <Windows.h>
@@ -46,34 +46,34 @@ public:
 
 struct Settings
 {
-	Settings():
+	Settings() :
 		newGame(false),
 		continueGame(false),
 		exit(false),
 		skin(1),
 		difficulty(0),
-		fps(30 + 15*difficulty)
+		fps(30 + 15 * difficulty)
 	{}
 
 	bool serialize(std::ofstream& out)
 	{
-		out.write((const char*)& newGame, sizeof(newGame));
-		out.write((const char*)& continueGame, sizeof(continueGame));
-		out.write((const char*)& exit, sizeof(exit));
-		out.write((const char*)& skin, sizeof(skin));
-		out.write((const char*)& difficulty, sizeof(difficulty));
-		out.write((const char*)& fps, sizeof(fps));
+		out.write((const char*)&newGame, sizeof(newGame));
+		out.write((const char*)&continueGame, sizeof(continueGame));
+		out.write((const char*)&exit, sizeof(exit));
+		out.write((const char*)&skin, sizeof(skin));
+		out.write((const char*)&difficulty, sizeof(difficulty));
+		out.write((const char*)&fps, sizeof(fps));
 
 		return out.good();
 	}
 	bool deserialize(std::ifstream& in)
 	{
-		in.read((char*)& newGame, sizeof(newGame));
-		in.read((char*)& continueGame, sizeof(continueGame));
-		in.read((char*)& exit, sizeof(exit));
-		in.read((char*)& skin, sizeof(skin));
-		in.read((char*)& difficulty, sizeof(difficulty));
-		in.read((char*)& fps, sizeof(fps));
+		in.read((char*)&newGame, sizeof(newGame));
+		in.read((char*)&continueGame, sizeof(continueGame));
+		in.read((char*)&exit, sizeof(exit));
+		in.read((char*)&skin, sizeof(skin));
+		in.read((char*)&difficulty, sizeof(difficulty));
+		in.read((char*)&fps, sizeof(fps));
 
 		return in.good();
 	}
@@ -97,10 +97,10 @@ enum EnemyLevel : int
 
 const struct EnemyInfo
 {
-	EnemyInfo(const unsigned _dimX, const unsigned _dimY, const Coords& _center) : 
+	EnemyInfo(const unsigned _dimX, const unsigned _dimY, const Coords& _center) :
 		dimX(_dimX),
-		dimY(_dimY), 
-		center(_center) 
+		dimY(_dimY),
+		center(_center)
 	{};
 	EnemyInfo(const unsigned _dimX, const unsigned _dimY) :
 		dimX(_dimX),
@@ -138,7 +138,7 @@ const unsigned MAX_BULLET_CAPACITY = WIDTH * 5;
 
 struct Graphics
 {
-	Graphics(const char _graphics[MAX_OBJ_HEIGHT][MAX_OBJ_WIDTH]):
+	Graphics(const char _graphics[MAX_OBJ_HEIGHT][MAX_OBJ_WIDTH]) :
 		dimX(0)
 	{
 		size_t i = 0;
@@ -172,26 +172,27 @@ struct Graphics
 
 
 const unsigned char field[HEIGHT][WIDTH + 1] = {
-{ 'L', 'i', 'v', 'e', 's', ':', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', 'S', 'c', 'o', 'r', 'e', ':', ' ', '0', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254 , (unsigned char)254, (unsigned char)254 , (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254 , (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, (unsigned char)254, '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', '_', ' ', ' ', '_', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' , '/', '\\', ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', '|', '|', ' ', '|', ' ', ' ', ' ', ' ', '_', ' ', ' ', ' ', ' ', '/', '\\', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', ' ', ' ', '_', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '/', '\\', '|', '|' , ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', '|', '|', ' ', '|', '_', ' ', '_', '|', ' ', '|', ' ', ' ', ' ', '|', '|' , ' ', ' ', ' ', ' ', ' ', '=', '=', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '\0' },
-{ ' ', ' ', ' ', ' ', '_', '|', ' ', '|', ' ', ' ', ' ', '_', ' ', ' ', ' ', '|', '|' , '|', '|' , ' ', ' ', ' ', ' ', ' ', ' ', '|', ' ', '|', '|', ' ', '|', ' ', '|', ' ', '|', ' ', '|', ' ', ' ', ' ', '|', '|' , ' ', ' ', ' ', ' ', '=', '=', '=', '=', ' ', ' ', ' ', ' ', ' ', '_', ' ', ' ', '_', ' ', '\0' },
-{ '_', '_', '_', '|', ' ', '|', ' ', '|', '_', '_', '|', ' ', '|', '_', '_', '|', '|' , '|', '|' , '_', '_', '_', '_', '_', '_', '|', ' ', '|', '|', ' ', '|', ' ', '|', ' ', '|', ' ', '|', '_', '_', '_', '|', '|' , '_', '_', '_', '=', '=', '=', '=', '=', '=', '_', '_', '_', '|', ' ', '|', '|', ' ', ' ', '\0' } };
+	"Lives:                                      Score: 0        ",
+	"■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■",
+	"                                                            ",
+	"                                                            ",
+	"                                                            ",
+	"                                                            ",
+	"                                                            ",
+	"                                                            ",
+	"                                                            ",
+	"                                                            ",
+	"                                                            ",
+	"                                                            ",
+	"                                                            ",
+	"                                                            ",
+	"                                                            ",
+	"                          _  _                              ",
+	"                 /\\      | || |    _    /\\                  ",
+	"      _        /\\||      | || |_ _| |   ||     ==           ",
+	"    _| |   _   ||||      | || | | | |   ||    ====     _  _ ",
+	"___| | |__| |__||||______| || | | | |___||___======___| || |"
+};
 
 //const char* EMPTY_ROW = field[10];
 static void clearScreen()
@@ -200,80 +201,76 @@ static void clearScreen()
 		std::cout << field[10] << '\n';
 }
 
-const char NEW_GAME[9] = { 'N', 'e', 'w', ' ', 'g', 'a', 'm', 'e', '\0' };
-const char NEW_GAME_SELECTED[9] = { 'N', 'E', 'W', ' ', 'G', 'A', 'M', 'E', '\0' };
+const char NEW_GAME[] = "New game";
+const char NEW_GAME_SELECTED[] = "NEW GAME";
 
-const char CONTINUE[9] = { 'C', 'o', 'n', 't', 'i', 'n', 'u', 'e', '\0' };
-const char CONTINUE_SELECTED[9] = { 'C', 'O', 'N', 'T', 'I', 'N', 'U', 'E', '\0' };
+const char CONTINUE[] = "Continue";
+const char CONTINUE_SELECTED[] = "CONTINUE";
 
-const char SETTINGS[9] = { 'S', 'e', 't', 't', 'i', 'n', 'g', 's', '\0' };
-const char SETTINGS_SELECTED[9] = { 'S', 'E', 'T', 'T', 'I', 'N', 'G', 'S', '\0' };
+const char SETTINGS[] = "Settings";
+const char SETTINGS_SELECTED[] = "SETTINGS";
 
-const char EXIT[5] = { 'E', 'x', 'i', 't', '\0' };
-const char EXIT_SELECTED[5] = { 'E', 'X', 'I', 'T', '\0' };
+const char EXIT[] = "Exit";
+const char EXIT_SELECTED[] = "EXIT";
 
-const char EASY[5] = { 'E', 'a', 's', 'y', '\0' };
-const char EASY_SELECTED[5] = { 'E', 'A', 'S', 'Y', '\0' };
+const char EASY[] = "Easy";
+const char EASY_SELECTED[] = "EASY";
 
-const char NORMAL[7] = { 'N', 'o', 'r', 'm', 'a', 'l', '\0' };
-const char NORMAL_SELECTED[7] = { 'N', 'O', 'R', 'M', 'A', 'L', '\0' };
+const char NORMAL[] = "Normal";
+const char NORMAL_SELECTED[] = "NORMAL";
 
-const char HARD[5] = { 'H', 'a', 'r', 'd', '\0' };
-const char HARD_SELECTED[5] = { 'H', 'A', 'R', 'D', '\0' };
+const char HARD[] = "Hard";
+const char HARD_SELECTED[] = "HARD";
 
-const char BACK[5] = { 'B', 'a', 'c', 'k', '\0' };
-const char BACK_SELECTED[5] = { 'B', 'A', 'C', 'K', '\0' };
+const char BACK[] = "Back";
+const char BACK_SELECTED[] = "BACK";
 
-const char SKIN[5] = { 'S', 'k', 'i', 'n', '\0' };
-const char SKIN_SELECTED[5] = { 'S', 'K', 'I', 'N', '\0' };
+const char SKIN[] = "Skin";
+const char SKIN_SELECTED[] = "SKIN";
 
 const unsigned NUM_OF_SKINS = 3;
 
 static char player1[MAX_PLAYER_HEIGHT][MAX_PLAYER_WIDTH] = {
-{ '\\', '-', ' ', '\0' },
-{  '=', 'x', '>', '\0' },
-{  '/', '-', ' ', '\0' },
-{ '\0' }
+	"\\- ",
+	"=x>",
+	"/- ",
+	""
 };
 
-static char player2[MAX_PLAYER_HEIGHT][MAX_PLAYER_WIDTH] = {
-	{ '-', '(', '-', ')', '>', '\0'}
-};
+static char player2[MAX_PLAYER_HEIGHT][MAX_PLAYER_WIDTH] = { "-(-)>" };
 
-static char player3[MAX_PLAYER_HEIGHT][MAX_PLAYER_WIDTH] = {
-	{ '=', '>', '\0' }
-};
+static char player3[MAX_PLAYER_HEIGHT][MAX_PLAYER_WIDTH] = { "=>" };
 
 
 const char enemyType1[MAX_ENEMY_HEIGHT][MAX_ENEMY_WIDTH] = {
-	{ ' ', 'O', 'O', '\0' },
-{ 'O', 'O', 'O', '\0' },
-{ ' ', 'O', 'O', '\0' },
-{ '\0' }
+	" OO",
+	"OOO",
+	" OO",
+	""
 };
 
 const char boss1[MAX_ENEMY_HEIGHT][MAX_ENEMY_WIDTH]{
-{ ' ', ' ' , ' ', '/', '\\', '_', '_', '_', '_' , '_', '_' , ' ', ' ' , '_', '_', '\0' },
-{ ' ', ' ' , '/', '-', '~' , ' ', ' ', ' ', ' ' , ' ', ',' , '^', '~' , ' ', '/', '\0' },
-{ ' ', '/' , ' ', ',', '-' , '-', '-', 'x', ' ' , '/', '_' , '.', '-' , '"', 'L', '\0' },
-{ '/', '-' , '"', '.', '-' , '-', '-', '.', '\\', '_', '.' , '-', '\'', '/', '!', '\0' },
-{ '0', '\\', '/', '0', '_' , '_', '_', '/', ' ' , ' ', ' ' , 'x', '\'', ' ', '/', '\0' },
-{ '\\', '.', '_', '_', '_' , '_', '_', '_', '.' , '-', '\'', '_', '.' , '/', ' ', '\0' },
-{ ' ', '`', 'x', '_', '_'  , '_', '_', '_', '_' , '_', '_' , '_', '/' , ' ', ' ', '\0' },
-{'\0'} 
+	{ "   /\\______  __" },
+	{ "  /-~     ,^~ /" },
+	{ " / ,---x /_.-\"L" },
+	{ "/-\".-- - .\\_. - '/!" },
+	{ "0\\/0___/   x' /" },
+	{ "\\.______.-'_./ " },
+	{ " `x_________/  " },
+	""
 };
 
 
 const char enemyType2[MAX_ENEMY_HEIGHT][MAX_ENEMY_WIDTH] = {
-{ ' ', '<', ' ', ' ', '\0' },
-{ '<', '<', '<', '<', '\0' },
-{ ' ', '<', ' ', ' ', '\0' },
-{ '\0' }
+	" <  ",
+	"<<<<",
+	" <  ",
+	""
 };
 
-const char bullet[MAX_BULLET_HEIGHT][MAX_BULLET_WIDTH] = { 
-{ '-', '\0' },
-{ '\0' },
+const char bullet[MAX_BULLET_HEIGHT][MAX_BULLET_WIDTH] = {
+	"-",
+	""
 };
 
 #endif // !SFNCS
